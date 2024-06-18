@@ -8,21 +8,25 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
+
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MenuAdmin extends JFrame {
-    private static final String archivoCanciones = "zCanciones.json";
+    private static final String archivoCanciones = "zCanciones.json";               //Funciones de admin, hechas para eliminar, borrar, listar y modificar cosas
     private JList<Cancion> listaCanciones;
     private JList<Usuario> listaUsuarios;
     private DefaultListModel<Usuario> modeloListaUsuarios;
     private List<Usuario> usuarios;
+    File archivo2;
 
     public MenuAdmin(File archivo) {
         listaCanciones = new JList<>();
         usuarios = new ArrayList<>();
         modeloListaUsuarios = new DefaultListModel<>();
         listaUsuarios = new JList<>(modeloListaUsuarios);
+        this.archivo2=new File("zplaylists.json");
 
         // Configuración de la ventana
         setTitle("Menú Administrador");
@@ -111,7 +115,7 @@ public class MenuAdmin extends JFrame {
 
         btnAgregarCancion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                agregarCancion();
+                agregarCancion(archivoCanciones);
             }
         });
 
@@ -260,25 +264,10 @@ public class MenuAdmin extends JFrame {
         }
     }
 
-    private List<Usuario> leerUsuariosDesdeJsonRetorna(String nombreArchivo) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            File archivo = new File(nombreArchivo);
-            if (archivo.exists()) {
-                return mapper.readValue(archivo, new TypeReference<List<Usuario>>() {});
-            } else {
-                System.out.println("El archivo de usuarios no existe.");
-                return new ArrayList<>();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-    }
 
-    public void agregarCancion() {
+    public void agregarCancion(String nombreArchivo) {
         int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la canción:"));
-        if (!verificarIdCancion(id)) {
+        if (verificarIdCancion(id)) {
             JOptionPane.showMessageDialog(null, "El ID de canción ya existe.");
             return;
         } else {
@@ -288,19 +277,23 @@ public class MenuAdmin extends JFrame {
             String rutaPortada = JOptionPane.showInputDialog("Ingrese la URL de la portada:");
 
             Cancion nuevaCancion = new Cancion(id, nombre, genero, rutaCancion, rutaPortada);
-            DefaultListModel<Cancion> modeloLista = (DefaultListModel<Cancion>) listaCanciones.getModel();
-            modeloLista.addElement(nuevaCancion);
-
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                List<Cancion> canciones = new ArrayList<>();
-                for (int i = 0; i < modeloLista.size(); i++) {
-                    canciones.add(modeloLista.getElementAt(i));
+            CollectionsCancion canciones2=new CollectionsCancion();
+            canciones2.bajarArchivo(new File(archivoCanciones));
+            canciones2.agregarCanciones(nuevaCancion);
+            CollectionsPlaylist playlist=new CollectionsPlaylist();
+            playlist.bajarArchivo(archivo2);
+            for(Playlist aux: playlist.getPlaylists().values())
+            {
+                if(aux.getNombre().equalsIgnoreCase(nuevaCancion.getGenero()))
+                {
+                    aux.agregarCancion(nuevaCancion);
                 }
-                mapper.writeValue(new File(archivoCanciones), canciones);
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
+            canciones2.cargarArchivo(new File(archivoCanciones));
+            playlist.cargarArchivo(archivo2);
+
+
         }
     }
 
@@ -351,138 +344,44 @@ public class MenuAdmin extends JFrame {
                 return;
             }
 
-            List<Cancion> canciones = leerCancionesDesdeJsonRetorna(archivoCanciones);
+            CollectionsCancion canciones=new CollectionsCancion();
+            canciones.bajarArchivo(new File(archivoCanciones));
 
-            boolean encontrado = false;
-            Iterator<Cancion> iterator = canciones.iterator();
-            while (iterator.hasNext()) {
-                Cancion cancion = iterator.next();
-                if (cancion.getId() == idCancion) {
-                    iterator.remove();
-                    encontrado = true;
-                    break;
-                }
+            boolean encontrado = canciones.removeSong(idCancion);
+            if(encontrado)
+            {
+                canciones.cargarArchivo(new File(archivoCanciones));
+                CollectionsPlaylist playlist=new CollectionsPlaylist();
+                playlist.bajarArchivo(archivo2);
+                playlist.removeSong(idCancion);
+                playlist.cargarArchivo(archivo2);
             }
+
 
             if (!encontrado) {
                 JOptionPane.showMessageDialog(null, "No se encontró ninguna canción con el ID especificado", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.writeValue(new File(archivoCanciones), canciones);
-
-                // Actualizar la lista visual de canciones
-                DefaultListModel<Cancion> modeloLista = new DefaultListModel<>();
-                for (Cancion cancion : canciones) {
-                    modeloLista.addElement(cancion);
-                }
-                listaCanciones.setModel(modeloLista);
-
-                JOptionPane.showMessageDialog(null, "Canción eliminada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Ocurrió un error al eliminar la canción", "Error", JOptionPane.ERROR_MESSAGE);
-            }
         }
     }
     public void modificarCancion() {
-        // Configurar el diálogo de entrada
-        JTextField idField = new JTextField(5);
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Ingrese el ID de la canción a modificar:"));
-        panel.add(idField);
-
-        int result = JOptionPane.showConfirmDialog(null, panel, "Modificar Canción", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-        if (result == JOptionPane.OK_OPTION) {
-            int idCancion;
-            try {
-                idCancion = Integer.parseInt(idField.getText());
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "ID inválido. Por favor ingrese un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            List<Cancion> canciones = leerCancionesDesdeJsonRetorna(archivoCanciones);
-
-            Cancion cancionAModificar = null;
-            for (Cancion cancion : canciones) {
-                if (cancion.getId() == idCancion) {
-                    cancionAModificar = cancion;
-                    break;
-                }
-            }
-
-            if (cancionAModificar == null) {
-                JOptionPane.showMessageDialog(null, "No se encontró ninguna canción con el ID especificado", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Configurar el diálogo de entrada para los nuevos valores
-            JTextField campoField = new JTextField(10);
-            JTextField valorField = new JTextField(10);
-            JPanel panelModificacion = new JPanel(new GridLayout(0, 1));
-            panelModificacion.add(new JLabel("Ingrese el campo que desea modificar (id, nombre, genero):"));
-            panelModificacion.add(campoField);
-            panelModificacion.add(new JLabel("Ingrese el nuevo valor para el campo:"));
-            panelModificacion.add(valorField);
-
-            int resultMod = JOptionPane.showConfirmDialog(null, panelModificacion, "Modificar Canción", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-            if (resultMod == JOptionPane.OK_OPTION) {
-                String campo = campoField.getText();
-                String nuevoValor = valorField.getText();
-
-                switch (campo.toLowerCase()) {
-                    case "id":
-                        try {
-                            int nuevoId = Integer.parseInt(nuevoValor);
-                            cancionAModificar.setId(nuevoId);
-                        } catch (NumberFormatException e) {
-                            JOptionPane.showMessageDialog(null, "ID inválido. Por favor ingrese un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-                        break;
-                    case "nombre":
-                        cancionAModificar.setNombre(nuevoValor);
-                        break;
-                    case "genero":
-                        cancionAModificar.setGenero(nuevoValor);
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Campo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                }
-
-                try {
-                    ObjectMapper mapper = new ObjectMapper();
-                    mapper.writeValue(new File(archivoCanciones), canciones);
-
-                    DefaultListModel<Cancion> modeloLista = new DefaultListModel<>();
-                    for (Cancion cancion : canciones) {
-                        modeloLista.addElement(cancion);
-                    }
-                    listaCanciones.setModel(modeloLista);
-
-                    JOptionPane.showMessageDialog(null, "Canción modificada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Ocurrió un error al modificar la canción", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
+        eliminarCancion();
+        agregarCancion(archivoCanciones);
     }
     private boolean verificarIdCancion(int id) {
-        List<Cancion> canciones = leerCancionesDesdeJsonRetorna(archivoCanciones);
-        for (Cancion cancion : canciones) {
-            if (cancion.getId() == id) {
-                return false;
-            }
+        CollectionsCancion canciones=new CollectionsCancion();
+        canciones.bajarArchivo(new File(archivoCanciones));
+        if(canciones.retornarsiHayID(id))
+        {
+            return true;
         }
-        return true;
+        else
+        {
+            return false;
+        }
+
     }
 
 
 }
+

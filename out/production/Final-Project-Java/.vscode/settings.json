@@ -1,0 +1,15 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\Librerias JSON\\gson-2.8.6.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\Librerias JSON\\json-20220320.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\Librerias JSON\\jackson-annotations-2.15.2.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\Librerias JSON\\jackson-core-2.15.2.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\Librerias JSON\\jackson-databind-2.15.2.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\gson-2.8.6.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\json-20220320.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\jackson-annotations-2.15.2.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\jackson-core-2.15.2.jar",
+        "c:\\Users\\gonza\\Downloads\\Librerias JSON\\jackson-databind-2.15.2.jar"
+    ]
+}

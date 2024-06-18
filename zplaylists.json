@@ -1,0 +1,264 @@
+{
+  "Trap" : {
+    "nombre" : "Trap",
+    "cancionesPlaylist" : [ {
+      "id" : 13,
+      "nombre" : "Besame Remix",
+      "genero" : "Trap",
+      "rutaCancion" : "audio/Besame-Remix.wav",
+      "rutaPortada" : "Media/BesameRemixPortada.png"
+    }, {
+      "id" : 4,
+      "nombre" : "Call Me Baby",
+      "genero" : "Trap",
+      "rutaCancion" : "audio/Call-Me-Baby.wav",
+      "rutaPortada" : "Media/CallMeMaybePortada.png"
+    }, {
+      "id" : 7,
+      "nombre" : "Contando Lunares",
+      "genero" : "Trap",
+      "rutaCancion" : "audio/Cruz-Contando-Lunares.wav",
+      "rutaPortada" : "Media/contando.jpeg"
+    }, {
+      "id" : 6,
+      "nombre" : "Mina el Hammani",
+      "genero" : "Trap",
+      "rutaCancion" : "audio\\Cruz-Mina-El-Hammani.wav",
+      "rutaPortada" : "Media/MinaElHammaniPortada.png"
+    }, {
+      "id" : 8,
+      "nombre" : "Un Monton",
+      "genero" : "Trap",
+      "rutaCancion" : "audio\\Duki-Un-Monton.wav",
+      "rutaPortada" : "Media/UnMontonPortada.png"
+    } ],
+    "portada" : "Media/Trap.png"
+  },
+  "Reggaeton" : {
+    "nombre" : "Reggaeton",
+    "cancionesPlaylist" : [ {
+      "id" : 11,
+      "nombre" : "Algo Magico",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Rauw-Algo-Magico.wav",
+      "rutaPortada" : "Media/AlgoMagicoPortada.png"
+    }, {
+      "id" : 20,
+      "nombre" : "Diosa",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Diosa.wav",
+      "rutaPortada" : "Media/DiosaPortada.png"
+    }, {
+      "id" : 16,
+      "nombre" : "Explicito",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Explicito.wav",
+      "rutaPortada" : "Media/ExplicitoPortada.png"
+    }, {
+      "id" : 9,
+      "nombre" : "Feliz Cumplea Ferxxo",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Feid-FelizCum.wav",
+      "rutaPortada" : "Media/FelizCumplePortada.png"
+    }, {
+      "id" : 22,
+      "nombre" : "Inocente",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Inocente.wav",
+      "rutaPortada" : "Media/InocentePortada.png"
+    }, {
+      "id" : 2,
+      "nombre" : "La Falda",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-LaFalda.wav",
+      "rutaPortada" : "Media/LaFaldaPortada.png"
+    }, {
+      "id" : 5,
+      "nombre" : "Normal",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Feid-Normal.wav",
+      "rutaPortada" : "Media/NormalPortada.png"
+    }, {
+      "id" : 21,
+      "nombre" : "Otro",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Otro.wav",
+      "rutaPortada" : "Media/OtroPortada.png"
+    }, {
+      "id" : 3,
+      "nombre" : "Piensan",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Piensan.wav",
+      "rutaPortada" : "Media/PiensanPortada.png"
+    }, {
+      "id" : 14,
+      "nombre" : "Porfa",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Feid-Porfa.wav",
+      "rutaPortada" : "Media/PorfaPortada.png"
+    }, {
+      "id" : 18,
+      "nombre" : "Relacion Rota",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Relacion.wav",
+      "rutaPortada" : "Media/RelacionPortada.png"
+    }, {
+      "id" : 19,
+      "nombre" : "Tu",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Tu.wav",
+      "rutaPortada" : "Media/TuPortada.png"
+    } ],
+    "portada" : "Media/Reggaeton.png"
+  },
+  "Hip Hop" : {
+    "nombre" : "Hip Hop",
+    "cancionesPlaylist" : [ {
+      "id" : 17,
+      "nombre" : "Drop It Like It is Hot",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-Drop.wav",
+      "rutaPortada" : "Media/DropItPortada.png"
+    }, {
+      "id" : 15,
+      "nombre" : "Riders on Storm",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-Riders.wav",
+      "rutaPortada" : "Media/RidersOnTheStormPortada.png"
+    }, {
+      "id" : 10,
+      "nombre" : "Vato",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-Vato.wav",
+      "rutaPortada" : "Media/VatoPortada.png"
+    }, {
+      "id" : 12,
+      "nombre" : "Wild And Free",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-WildFree.wav",
+      "rutaPortada" : "Media/WildAndFreePortada.png"
+    } ],
+    "portada" : "Media/hiphop.png"
+  },
+  "Cruz Cafune" : {
+    "nombre" : "Cruz Cafune",
+    "cancionesPlaylist" : [ {
+      "id" : 7,
+      "nombre" : "Contando Lunares",
+      "genero" : "Trap",
+      "rutaCancion" : "audio/Cruz-Contando-Lunares.wav",
+      "rutaPortada" : "Media/contando.jpeg"
+    }, {
+      "id" : 6,
+      "nombre" : "Mina el Hammani",
+      "genero" : "Trap",
+      "rutaCancion" : "audio\\Cruz-Mina-El-Hammani.wav",
+      "rutaPortada" : "Media/MinaElHammaniPortada.png"
+    } ],
+    "portada" : "Media/CruzCafune.jpg"
+  },
+  "Feid" : {
+    "nombre" : "Feid",
+    "cancionesPlaylist" : [ {
+      "id" : 9,
+      "nombre" : "Feliz Cumplea Ferxxo",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Feid-FelizCum.wav",
+      "rutaPortada" : "Media/FelizCumplePortada.png"
+    }, {
+      "id" : 14,
+      "nombre" : "Porfa",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Feid-Porfa.wav",
+      "rutaPortada" : "Media/PorfaPortada.png"
+    } ],
+    "portada" : "Media/Feid.jpg"
+  },
+  "Myke Towers" : {
+    "nombre" : "Myke Towers",
+    "cancionesPlaylist" : [ {
+      "id" : 20,
+      "nombre" : "Diosa",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Diosa.wav",
+      "rutaPortada" : "Media/DiosaPortada.png"
+    }, {
+      "id" : 16,
+      "nombre" : "Explicito",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Explicito.wav",
+      "rutaPortada" : "Media/ExplicitoPortada.png"
+    }, {
+      "id" : 22,
+      "nombre" : "Inocente",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Inocente.wav",
+      "rutaPortada" : "Media/InocentePortada.png"
+    }, {
+      "id" : 2,
+      "nombre" : "La Falda",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-LaFalda.wav",
+      "rutaPortada" : "Media/LaFaldaPortada.png"
+    }, {
+      "id" : 21,
+      "nombre" : "Otro",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Otro.wav",
+      "rutaPortada" : "Media/OtroPortada.png"
+    }, {
+      "id" : 3,
+      "nombre" : "Piensan",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Piensan.wav",
+      "rutaPortada" : "Media/PiensanPortada.png"
+    }, {
+      "id" : 18,
+      "nombre" : "Relacion Rota",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Relacion.wav",
+      "rutaPortada" : "Media/RelacionPortada.png"
+    }, {
+      "id" : 19,
+      "nombre" : "Tu",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Myke-Tu.wav",
+      "rutaPortada" : "Media/TuPortada.png"
+    } ],
+    "portada" : "Media/MykeTowers.jpg"
+  },
+  "Rauw Alejandro" : {
+    "nombre" : "Rauw Alejandro",
+    "cancionesPlaylist" : [ {
+      "id" : 11,
+      "nombre" : "Algo Magico",
+      "genero" : "Reggaeton",
+      "rutaCancion" : "audio/Rauw-Algo-Magico.wav",
+      "rutaPortada" : "Media/AlgoMagicoPortada.png"
+    } ],
+    "portada" : "Media/RauwAlejandro.jpg"
+  },
+  "Snoop Dog" : {
+    "nombre" : "Snoop Dog",
+    "cancionesPlaylist" : [ {
+      "id" : 17,
+      "nombre" : "Drop It Like It is Hot",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-Drop.wav",
+      "rutaPortada" : "Media/DropItPortada.png"
+    }, {
+      "id" : 15,
+      "nombre" : "Riders on Storm",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-Riders.wav",
+      "rutaPortada" : "Media/RidersOnTheStormPortada.png"
+    }, {
+      "id" : 12,
+      "nombre" : "Wild And Free",
+      "genero" : "Hip Hop",
+      "rutaCancion" : "audio/Snoop-WildFree.wav",
+      "rutaPortada" : "Media/WildAndFreePortada.png"
+    } ],
+    "portada" : "Media/SnoopDog.jpg"
+  }
+}
